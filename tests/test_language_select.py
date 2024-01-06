@@ -1,8 +1,12 @@
-from selene import browser, have
+from qa_guru_diploma.pages.lime_shop import LimeShop
+
+lime_shop = LimeShop()
 
 
 def test_lang(open_main_page):
-    browser.element('[class="Lang LanguageSelector btn-control"]').click()
-    browser.element('[class="menu open"]').all('ul li [data-v-ba5fc516]').second.click()
+    # WHEN
+    lime_shop.click_language_selector()
+    lime_shop.select_kazakhstan_language()
 
-    browser.should(have.url('https://lime-shop.com/kz_ru'))
+    # THEN
+    lime_shop.check_browser_url('https://lime-shop.com/kz_ru')

@@ -1,37 +1,44 @@
-from selene import browser, have, be
+from qa_guru_diploma.pages.lime_shop import LimeShop
+
+lime_shop = LimeShop()
 
 
 def test_successful_authorization(open_main_page):
-    browser.element('[class ="columns"] > a[href="/ru_ru#lk"] >[class ="SvgIcon"]').click()
-    browser.element('[class="btn btn-block btn-outline btn-primary"]').click()
-    browser.element('[class="Inputbox__input"]').send_keys('woodst@gmail.com')
-    browser.element('[class="Inputbox__input passwordInput"]').send_keys('12345678')
-    browser.element('[type="submit"]').click()
+    # WHEN
+    lime_shop.open_authorization_modal()
+    lime_shop.type_email('woodst@gmail.com')
+    lime_shop.type_password('12345678')
+    lime_shop.submit_authorization()
 
-    browser.element('[class="FormGroup FormGroupSubmit"] > [class="FormGroup__control"] > button').should(have.text('ИЗМЕНИТЬ ПАРОЛЬ'))
+    # THEN
+    lime_shop.check_successful_authorization()
 
 
 def test_wrong_password_authorization(open_main_page):
-    browser.element('[class ="columns"] > a[href="/ru_ru#lk"] >[class ="SvgIcon"]').click()
-    browser.element('[class="btn btn-block btn-outline btn-primary"]').click()
-    browser.element('[class="Inputbox__input"]').send_keys('woodst@gmail.com')
-    browser.element('[class="Inputbox__input passwordInput"]').send_keys('1234567822')
-    browser.element('[type="submit"]').click()
+    # WHEN
+    lime_shop.open_authorization_modal()
+    lime_shop.type_email('woodst@gmail.com')
+    lime_shop.type_password('1234567822')
+    lime_shop.submit_authorization()
 
-    browser.element('[class="App_Message"] > [class="snack-bar-wrap"] > [class="snack-bar"]').should(be.visible)
+    # THEN
+    lime_shop.check_authorization_error_message_is_visible()
 
 
 def test_wrong_login_authorization(open_main_page):
-    browser.element('[class ="columns"] > a[href="/ru_ru#lk"] >[class ="SvgIcon"]').click()
-    browser.element('[class="btn btn-block btn-outline btn-primary"]').click()
-    browser.element('[class="Inputbox__input"]').send_keys('woodset@gmail.com')
-    browser.element('[class="Inputbox__input passwordInput"]').send_keys('12345678')
-    browser.element('[type="submit"]').click()
+    # WHEN
+    lime_shop.open_authorization_modal()
+    lime_shop.type_email('woodset@gmail.com')
+    lime_shop.type_password('12345678')
+    lime_shop.submit_authorization()
 
-    browser.element('[class="App_Message"] > [class="snack-bar-wrap"] > [class="snack-bar"]').should(be.visible)
+    # THEN
+    lime_shop.check_authorization_error_message_is_visible()
 
 
 def test_close_authorization_modal(open_main_page):
-    browser.element('[class ="columns"] > a[href="/ru_ru#lk"] >[class ="SvgIcon"]').click()
-    browser.element('[class="SvgIcon IButtonIcon"]').click()
-    browser.element('[class ="columns"] > a[href="/ru_ru#lk"] >[class ="SvgIcon"]').should(be.visible)
+    # WHEN
+    lime_shop.open_authorization_modal()
+    lime_shop.close_authorization_modal()
+    # THEN
+    lime_shop.personal_area_button_is_visible()

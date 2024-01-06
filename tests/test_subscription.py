@@ -1,20 +1,22 @@
-from selene import browser, be, command
+from qa_guru_diploma.pages.lime_shop import LimeShop
 
+lime_shop = LimeShop()
 
 def test_modal_after_clicking_subscription(open_main_page):
-    browser.element('.l-accept-cookies').element('.l-btn').click()
-    browser.element('[href="#subscribe"]').perform(command.js.scroll_into_view)
-    browser.element('[href="#subscribe"]').click()
+    # WHEN
+    lime_shop.accept_cookies()
+    lime_shop.click_subscription_button()
 
-    browser.element('[class="ViewModal add-scrollbar"]').should(be.visible)
-
+    # THEN
+    lime_shop.check_subscription_modal_is_visible()
 
 def test_email_is_required_for_subscription(open_main_page):
-    browser.element('.l-accept-cookies').element('.l-btn').click()
-    browser.element('[href="#subscribe"]').perform(command.js.scroll_into_view)
-    browser.element('[href="#subscribe"]').click()
+    # WHEN
+    lime_shop.accept_cookies()
+    lime_shop.click_subscription_button()
 
-    browser.element('.checkbox__label').click()
-    browser.element('[class="FormGroup mb-0"]').element('[class="checkbox__indicator"]').click()
+    lime_shop.click_marketing_checkbox()
+    lime_shop.select_catalog_checkbox()
 
-    browser.element('[class="btn btn-block"]').should(be.disabled)
+    # THEN
+    lime_shop.check_subscribtion_button_in_modal_is_disabled()

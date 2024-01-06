@@ -1,44 +1,54 @@
 from time import sleep
+from qa_guru_diploma.pages.lime_shop import LimeShop, LimeChat
 
-from selene import browser, be, have
+lime_shop = LimeShop()
+lime_chat = LimeChat()
 
 
 def test_open_chat(open_main_page):
-    browser.element('.l-accept-cookies').element('.l-btn').click()
-    browser.element('.l-jivo-wrap').click()
+    # WHEN
+    lime_shop.accept_cookies()
+    lime_chat.open_chat()
 
-    browser.element('.notranslate').should(be.visible)
+    # THEN
+    lime_chat.check_chat_modal_is_visible()
 
 
 def test_close_chat(open_main_page):
-    browser.element('.l-accept-cookies').element('.l-btn').click()
-    browser.element('.l-jivo-wrap').click()
-    browser.element('.notranslate').element('.closeButton_ed11').element('.closeIcon_e25f').click()
+    # WHEN
+    lime_shop.accept_cookies()
+    lime_chat.open_chat()
+    lime_chat.close_chat()
 
-    browser.element('.l-jivo-wrap').should(be.visible)
+    # THEN
+    lime_chat.check_chat_button_is_visible()
 
 
 def test_delete_name_input_after_closing_chat(open_main_page):
-    browser.element('.l-accept-cookies').element('.l-btn').click()
-    browser.element('.l-jivo-wrap').click()
+    # WHEN
+    lime_shop.accept_cookies()
+    lime_chat.open_chat()
 
-    browser.element('[placeholder="Ваше имя"]').send_keys('Сергей')
+    lime_chat.type_name_into_chat('Сергей')
 
-    browser.element('.notranslate').element('.closeButton_ed11').element('.closeIcon_e25f').click()
+    lime_chat.close_chat()
     sleep(2)
-    browser.element('.l-jivo-wrap').click()
+    lime_chat.open_chat()
 
-    browser.element('[placeholder="Ваше имя"]').should(have.value(''))
+    # THEN
+    lime_chat.check_chat_name_is_blank()
 
 
 def test_delete_email_input_after_closing_chat(open_main_page):
-    browser.element('.l-accept-cookies').element('.l-btn').click()
-    browser.element('.l-jivo-wrap').click()
+    # WHEN
+    lime_shop.accept_cookies()
+    lime_chat.open_chat()
 
-    browser.element('[placeholder="Ваш e-mail*"]').send_keys('mail@mail.com')
+    lime_chat.type_email_into_chat('mail@mail.com')
 
-    browser.element('.notranslate').element('.closeButton_ed11').element('.closeIcon_e25f').click()
+    lime_chat.close_chat()
     sleep(2)
-    browser.element('.l-jivo-wrap').click()
+    lime_chat.open_chat()
 
-    browser.element('[placeholder="Ваше имя"]').should(have.value(''))
+    # THEN
+    lime_chat.check_chat_email_is_blank()
