@@ -4,6 +4,8 @@ from selene.support.shared import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+from qa_guru_diploma.utils import attach
+
 
 @pytest.fixture(scope='function', autouse=True)
 def setup_browser(request):
