@@ -19,7 +19,7 @@ def test_wrong_password_authorization(open_main_page):
     # WHEN
     lime_shop.open_authorization_modal()
     lime_shop.type_email(os.getenv('login_auth'))
-    lime_shop.type_password(os.getenv('wrong_password_auth')
+    lime_shop.type_password(os.getenv('wrong_password_auth'))
     lime_shop.submit_authorization()
 
     # THEN
@@ -30,7 +30,7 @@ def test_wrong_login_authorization(open_main_page):
     # WHEN
     lime_shop.open_authorization_modal()
     lime_shop.type_email(os.getenv('wrong_login_auth'))
-    lime_shop.type_password(os.getenv('password_auth')
+    lime_shop.type_password(os.getenv('password_auth'))
     lime_shop.submit_authorization()
 
     # THEN
