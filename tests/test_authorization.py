@@ -1,4 +1,5 @@
 from qa_guru_diploma.pages.lime_shop import LimeShop
+import os
 
 lime_shop = LimeShop()
 
@@ -6,8 +7,8 @@ lime_shop = LimeShop()
 def test_successful_authorization(open_main_page):
     # WHEN
     lime_shop.open_authorization_modal()
-    lime_shop.type_email('woodst@gmail.com')
-    lime_shop.type_password('12345678')
+    lime_shop.type_email(os.getenv('login_auth'))
+    lime_shop.type_password(os.getenv('password_auth'))
     lime_shop.submit_authorization()
 
     # THEN
