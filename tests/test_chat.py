@@ -1,10 +1,15 @@
 from time import sleep
+import allure
+from allure_commons.types import Severity
 from qa_guru_diploma.pages.lime_shop import LimeShop, LimeChat
 
 lime_shop = LimeShop()
 lime_chat = LimeChat()
 
 
+@allure.tag("Diploma")
+@allure.severity(Severity.MINOR)
+@allure.feature("Дипломный проект")
 def test_open_chat(open_main_page):
     # WHEN
     lime_shop.accept_cookies()
@@ -14,6 +19,9 @@ def test_open_chat(open_main_page):
     lime_chat.check_chat_modal_is_visible()
 
 
+@allure.tag("Diploma")
+@allure.severity(Severity.MINOR)
+@allure.feature("Дипломный проект")
 def test_close_chat(open_main_page):
     # WHEN
     lime_shop.accept_cookies()
@@ -24,6 +32,9 @@ def test_close_chat(open_main_page):
     lime_chat.check_chat_button_is_visible()
 
 
+@allure.tag("Diploma")
+@allure.severity(Severity.MINOR)
+@allure.feature("Дипломный проект")
 def test_delete_name_input_after_closing_chat(open_main_page):
     # WHEN
     lime_shop.accept_cookies()
@@ -39,6 +50,9 @@ def test_delete_name_input_after_closing_chat(open_main_page):
     lime_chat.check_chat_name_is_blank()
 
 
+@allure.tag("Diploma")
+@allure.severity(Severity.MINOR)
+@allure.feature("Дипломный проект")
 def test_delete_email_input_after_closing_chat(open_main_page):
     # WHEN
     lime_shop.accept_cookies()

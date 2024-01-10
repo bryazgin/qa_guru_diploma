@@ -1,9 +1,14 @@
+from allure_commons.types import Severity
 from qa_guru_diploma.pages.lime_shop import LimeShop
 import os
+import allure
 
 lime_shop = LimeShop()
 
 
+@allure.tag("Diploma")
+@allure.severity(Severity.CRITICAL)
+@allure.feature("Дипломный проект")
 def test_successful_authorization(open_main_page):
     # WHEN
     lime_shop.open_authorization_modal()
@@ -15,6 +20,9 @@ def test_successful_authorization(open_main_page):
     lime_shop.check_successful_authorization()
 
 
+@allure.tag("Diploma")
+@allure.severity(Severity.NORMAL)
+@allure.feature("Дипломный проект")
 def test_wrong_password_authorization(open_main_page):
     # WHEN
     lime_shop.open_authorization_modal()
@@ -26,6 +34,9 @@ def test_wrong_password_authorization(open_main_page):
     lime_shop.check_authorization_error_message_is_visible()
 
 
+@allure.tag("Diploma")
+@allure.severity(Severity.NORMAL)
+@allure.feature("Дипломный проект")
 def test_wrong_login_authorization(open_main_page):
     # WHEN
     lime_shop.open_authorization_modal()
@@ -37,6 +48,9 @@ def test_wrong_login_authorization(open_main_page):
     lime_shop.check_authorization_error_message_is_visible()
 
 
+@allure.tag("Diploma")
+@allure.severity(Severity.MINOR)
+@allure.feature("Дипломный проект")
 def test_close_authorization_modal(open_main_page):
     # WHEN
     lime_shop.open_authorization_modal()

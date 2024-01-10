@@ -1,7 +1,13 @@
+import allure
+from allure_commons.types import Severity
 from qa_guru_diploma.pages.lime_shop import LimeShop
 
 lime_shop = LimeShop()
 
+
+@allure.tag("Diploma")
+@allure.severity(Severity.NORMAL)
+@allure.feature("Дипломный проект")
 def test_modal_after_clicking_subscription(open_main_page):
     # WHEN
     lime_shop.accept_cookies()
@@ -10,6 +16,10 @@ def test_modal_after_clicking_subscription(open_main_page):
     # THEN
     lime_shop.check_subscription_modal_is_visible()
 
+
+@allure.tag("Diploma")
+@allure.severity(Severity.NORMAL)
+@allure.feature("Дипломный проект")
 def test_email_is_required_for_subscription(open_main_page):
     # WHEN
     lime_shop.accept_cookies()

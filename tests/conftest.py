@@ -3,7 +3,6 @@ import pytest
 from selene.support.shared import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
 from qa_guru_diploma.utils import attach
 
 
@@ -40,7 +39,7 @@ def setup_browser(request):
     attach.add_html(browser)
     attach.add_video(browser)
 
-    browser.quit()
+    browser.close()
 
 @pytest.fixture(scope='function')
 def open_main_page():

@@ -34,7 +34,7 @@ UI тесты реализованы в связке `Python`+`Selene`.
 ### 1. Перейти в [проект](https://jenkins.autotests.cloud/job/008-Bryazgin-ui_diploma/) и нажать кнопку `Build with Parameters`.
 <img src="resources/screenshots/Build with Parameters.png" width="1000">
 
-### 2. Указать параметры сборки  
+### 2. Указать параметры сборки и нажать кнопку `Build`
 `COMMENT` - комментарий, указывающий особенности сборки  
 `ENVIRONMENT` - выбор среды запуска тестов  
 <img src="resources/screenshots/select parameters.png" width="1000">
