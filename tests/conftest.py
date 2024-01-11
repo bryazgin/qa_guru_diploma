@@ -39,7 +39,7 @@ def setup_browser(request):
     attach.add_html(browser)
     attach.add_video(browser)
 
-    browser.close()
+    browser.quit()
 
 @pytest.fixture(scope='function')
 def open_main_page():
