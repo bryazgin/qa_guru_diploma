@@ -48,7 +48,7 @@ UI тесты реализованы в связке `Python`+`Selene`.
 ### Пример отчета в Allure
 <img src="resources/screenshots/Allure.png" width="1000">
 
-### Пример отчета в Allure testops
+### Пример дэшборда в Allure testops
 <img src="resources/screenshots/Allure Testops.png" width="1000">
 
 ### Пример запуска теста в Selenoid
