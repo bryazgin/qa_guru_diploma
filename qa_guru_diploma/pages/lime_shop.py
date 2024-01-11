@@ -109,3 +109,19 @@ class LimeChat():
     @allure.step('Проверить, что email пользователя в окне чата пустой')
     def check_chat_email_is_blank(self):
         browser.element('[placeholder="Ваш e-mail*"]').should(have.value(''))
+
+    @allure.step('Нажать кнопку эмодзи в чате')
+    def click_emoji_button(self):
+        browser.element('[class="emojiWrap_bf0d"]').click()
+
+    @allure.step('Проверить отображение popup выбора эмодзи')
+    def check_emoji_pop_up(self):
+        browser.element('[class="popup_edeb show_f40a"]').should(be.visible)
+
+    @allure.step('Нажать кнопку "три точки" в чате')
+    def click_three_dots_button(self):
+        browser.element('[class ="menuWrap_b00c"]').click()
+
+    @allure.step('Проверить отображение кнопки "скачать историю"')
+    def check_download_history_button(self):
+        browser.element('[class="menuItem_a572"]').should(be.visible)
