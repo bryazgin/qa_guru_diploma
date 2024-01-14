@@ -41,8 +41,7 @@ def setup_browser(request):
 
     browser.quit()
 
+
 @pytest.fixture(scope='function')
 def open_main_page():
     browser.open('')
-
-

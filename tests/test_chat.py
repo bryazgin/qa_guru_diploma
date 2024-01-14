@@ -70,6 +70,7 @@ def test_delete_email_input_after_closing_chat(open_main_page):
     # THEN
     lime_chat.check_chat_email_is_blank()
 
+
 @allure.tag("Diploma")
 @allure.severity(Severity.MINOR)
 @allure.feature("Дипломный проект")
