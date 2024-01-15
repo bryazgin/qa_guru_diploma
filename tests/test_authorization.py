@@ -1,9 +1,12 @@
 from allure_commons.types import Severity
-from qa_guru_diploma.pages.lime_shop import LimeShop
+from qa_guru_diploma.pages.lime_shop_page import lime_shop
 import os
 import allure
 
-lime_shop = LimeShop()
+login_auth = os.getenv('login_auth')
+password_auth = os.getenv('password_auth')
+wrong_password = os.getenv('wrong_password_auth')
+wrong_login = os.getenv('wrong_login_auth')
 
 
 @allure.tag("Diploma")
@@ -12,8 +15,8 @@ lime_shop = LimeShop()
 def test_successful_authorization(open_main_page):
     # WHEN
     lime_shop.open_authorization_modal()
-    lime_shop.type_email(os.getenv('login_auth'))
-    lime_shop.type_password(os.getenv('password_auth'))
+    lime_shop.type_email(login_auth)
+    lime_shop.type_password(password_auth)
     lime_shop.submit_authorization()
 
     # THEN
@@ -26,8 +29,8 @@ def test_successful_authorization(open_main_page):
 def test_wrong_password_authorization(open_main_page):
     # WHEN
     lime_shop.open_authorization_modal()
-    lime_shop.type_email(os.getenv('login_auth'))
-    lime_shop.type_password(os.getenv('wrong_password_auth'))
+    lime_shop.type_email(login_auth)
+    lime_shop.type_password(wrong_password)
     lime_shop.submit_authorization()
 
     # THEN
@@ -40,8 +43,8 @@ def test_wrong_password_authorization(open_main_page):
 def test_wrong_login_authorization(open_main_page):
     # WHEN
     lime_shop.open_authorization_modal()
-    lime_shop.type_email(os.getenv('wrong_login_auth'))
-    lime_shop.type_password(os.getenv('password_auth'))
+    lime_shop.type_email(wrong_login)
+    lime_shop.type_password(password_auth)
     lime_shop.submit_authorization()
 
     # THEN

@@ -1,11 +1,8 @@
-from time import sleep
 import allure
 import pytest
 from allure_commons.types import Severity
-from qa_guru_diploma.pages.lime_shop import LimeShop, LimeChat
-
-lime_shop = LimeShop()
-lime_chat = LimeChat()
+from qa_guru_diploma.pages.lime_shop_page import lime_shop
+from qa_guru_diploma.pages.lime_chat_page import lime_chat
 
 
 @allure.tag("Diploma")
@@ -45,7 +42,6 @@ def test_delete_name_input_after_closing_chat(open_main_page):
     lime_chat.type_name_into_chat('Сергей')
 
     lime_chat.close_chat()
-    sleep(2)
     lime_chat.open_chat()
 
     # THEN
@@ -64,7 +60,6 @@ def test_delete_email_input_after_closing_chat(open_main_page):
     lime_chat.type_email_into_chat('mail@mail.com')
 
     lime_chat.close_chat()
-    sleep(2)
     lime_chat.open_chat()
 
     # THEN

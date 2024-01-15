@@ -1,8 +1,6 @@
 import allure
 from allure_commons.types import Severity
-from qa_guru_diploma.pages.lime_shop import LimeShop
-
-lime_shop = LimeShop()
+from qa_guru_diploma.pages.lime_shop_page import lime_shop
 
 
 @allure.tag("Diploma")

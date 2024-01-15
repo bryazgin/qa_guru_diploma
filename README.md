@@ -67,6 +67,9 @@ allure serve build/allure-results
 ### Пример дэшборда в Allure testops
 <img src="resources/screenshots/Allure Testops.png" width="1000">
 
+### Добавлена интеграция с jira
+<img src="resources/screenshots/Jira.png" width="1000">
+
 ### Пример запуска теста в Selenoid
 <img src="resources/screenshots/test.gif" alt="video" width="1000">
 
