@@ -11,6 +11,7 @@ class LimeChat:
     @allure.step('Закрыть чат')
     def close_chat(self):
         browser.element('.notranslate').element('.closeButton_ed11').element('.closeIcon_e25f').click()
+        browser.element('.l-jivo-wrap').should(be.visible)
 
     @allure.step('Проверить, что кнопка "Чат" отображается')
     def check_chat_button_is_visible(self):
@@ -38,19 +39,19 @@ class LimeChat:
 
     @allure.step('Нажать кнопку эмодзи в чате')
     def click_emoji_button(self):
-        browser.element('[class="emojiWrap_bf0d"]').click()
+        browser.element('.main_f00a .emojiWrap_bf0d').click()
 
     @allure.step('Проверить отображение popup выбора эмодзи')
     def check_emoji_pop_up(self):
-        browser.element('[class="popup_edeb show_f40a"]').should(be.visible)
+        browser.element('.popup_edeb show_f40a').should(be.visible)
 
     @allure.step('Нажать кнопку "три точки" в чате')
     def click_three_dots_button(self):
-        browser.element('[class ="menuWrap_b00c"]').click()
+        browser.element('.menuWrap_b00c').click()
 
     @allure.step('Проверить отображение кнопки "скачать историю"')
     def check_download_history_button(self):
-        browser.element('[class="menuItem_a572"]').should(be.visible)
+        browser.element('.menuItem_a572').should(be.visible)
 
 
 lime_chat = LimeChat()
